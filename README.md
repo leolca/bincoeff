@@ -7,6 +7,8 @@ the following methods are available here:
 3. Yannis iterative method [ybincoeff.m](#ybincoeff) [code](ybincoeff.m)
 4. Prime factorization [pfbincoeff.m](#pfbincoeff) [code](pfbincoeff.m)
 5. Gamma function [gbincoeff.m](#gbincoeff) [code](gbincoeff.m)
+6. FFT method [fftbincoeff.m](#fftbincoeff) [code](fftbincoef.m)
+7. DFT based method [fbincoeff.m](#fbincoeff) [code](fbincoef.m)
 
 
 ## pbincoeff.m <a name="pbincoeff"></a>
@@ -122,4 +124,63 @@ octave:1> for n=0:10, for k=0:n, printf('%d\t',gbincoeff(n,k)); end; printf('\n'
 1	9	36	84	126	126	84	36	9	1	
 1	10	45	120	210	252	210	120	45	10	1	
 
+```
+
+
+## fftbincoeff.m <a name="fftbincoeff"></a>
+[see code here](fftbincoeff.m)
+
+This approach uses FFT to compute all binomial coefficients in a row for a given n.
+
+Using the following convention,
+
+![img](imgs/mconv.png)
+
+we may write
+
+![img](imgs/fftbincoeff_part1.png)
+
+![img](imgs/fftbincoeff_part2.png)
+
+![img](imgs/fftbincoeff_part3.png)
+
+```
+octave:519> for n=0:10, disp(fftbincoeff(n)); end;
+   1   0
+   1   1
+   1   2   1
+   1   3   3   1
+   1   4   6   4   1
+    1    5   10   10    5    1
+    1    6   15   20   15    6    1
+    1    7   21   35   35   21    7    1
+    1    8   28   56   70   56   28    8    1
+     1     9    36    84   126   126    84    36     9     1
+     1    10    45   120   210   252   210   120    45    10     1
+
+```
+
+
+
+
+## fbincoeff.m <a name="fbincoeff"></a>
+[see code here](fbincoeff.m)
+
+This approach uses DFT.
+
+![img](imgs/fbincoeff.png)
+
+```
+octave:520> for n=0:10, for k=0:n, printf('%d\t',fbincoeff(n,k)); end; printf('\n'); end;
+1	
+1	1	
+1	2	1	
+1	3	3	1	
+1	4	6	4	1	
+1	5	10	10	5	1	
+1	6	15	20	15	6	1	
+1	7	21	35	35	21	7	1	
+1	8	28	56	70	56	28	8	1	
+1	9	36	84	126	126	84	36	9	1	
+1	10	45	120	210	252	210	120	45	10	1	
 ```
