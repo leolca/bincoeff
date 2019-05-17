@@ -10,6 +10,15 @@ the following methods are available here:
 6. FFT method [fftbincoeff.m](#fftbincoeff) [code](fftbincoef.m)
 7. DFT based method [fbincoeff.m](#fbincoeff) [code](fbincoef.m)
 
+Python implementation using the [bigfloat](https://pypi.org/project/bigfloat/) package for arbitrary-precision, which is a wrapper around the [GNU MPFR library](https://www.mpfr.org/).
+8. Yannis iterative method [ybincoeff.py](#pyybincoeff)[code](ybincoeff.py)
+9. DFT based method [fbincoeff.py](#pyfbincoeff)[code](fbincoeff.py)
+
+Benchmatk procedures
+10. bincoeffbenchmark.m
+11. bincoeffbenchmarkvector.m
+12. bincoeffbenchmarkerror.m
+
 
 ## pbincoeff.m <a name="pbincoeff"></a>
 [see code here](pbincoeff.m)
@@ -142,6 +151,8 @@ we may write
 
 ![img](imgs/fftbincoeff_part2.png)
 
+![img](imgs/fftbincoeff_part4.png)
+
 ![img](imgs/fftbincoeff_part3.png)
 
 ```
@@ -184,3 +195,22 @@ octave:520> for n=0:10, for k=0:n, printf('%d\t',fbincoeff(n,k)); end; printf('\
 1	9	36	84	126	126	84	36	9	1	
 1	10	45	120	210	252	210	120	45	10	1	
 ```
+
+
+## ybincoeff.py <a name="pyybincoeff"></a>
+[see code here](ybincoeff.py)
+
+```
+$ ./ybincoeff.py 1000 353 1003
+25229445633065974235144080252055773735613043515311956893635594388544559689184803330180149528141512945359658556166399392346118918439771509194920459520556252295683805332098882502374636769258037666692232812592768678750591171883227016115891467430491067982639472436653138035382214107000
+```
+
+
+## fbincoeff.py <a name="pyfbincoeff"></a>
+[see code here](fbincoeff.py)
+
+```
+$ ./fbincoeff.py 1000 353 1003
+25229445633065974235144080252055773735613043515311956893635594388544559689184803330180149528141512945359658556166399392346118918439771509194920459520556252295683805332098882502374636769258037666692232812592768678750591171883227016115891467430491067982639472436653138035382214107000
+```
+
