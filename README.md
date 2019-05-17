@@ -7,7 +7,7 @@ the following methods are available here:
 3. 
 
 ## pbincoeff.m <a name="pbincoeff"></a>
-
+![img](http://bit.ly/2w6mndy)
 ```
 octave:1> for n=0:10, for k=0:n, printf('%d\t',pbincoeff(n,k)); end; printf('\n'); end;
 1	
