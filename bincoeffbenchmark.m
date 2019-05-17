@@ -58,17 +58,6 @@ for n=2:top_n,
 endfor
 
 % prime factor cancellations
-%for n=2:top_n,
-%    tic;
-%    for m=1:times,
-%        for k=0:n,
-%            c = mbincoeff (n,k);
-%        endfor
-%    endfor
-%    elapsed_time(n-1,5) = toc/times;
-%endfor
-
-% prime factor cancellations
 for n=2:top_n,
     tic;
     for m=1:times,
@@ -85,5 +74,3 @@ semilogy(elapsed_time, 'linewidth',2);
 xlabel('n'); ylabel('avg time (ms)');
 legend('ybincoeff','gbincoeff','fbincoeff','fftbincoef','rbincoeff','pfbincoeff','location','northwest');
 print (hf, "benchmarck.svg", "-dsvg");
-%print (hf, "benchmarck.pdf", "-dpdflatexstandalone");
-%system ("pdflatex benchmarck");

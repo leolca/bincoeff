@@ -58,10 +58,7 @@ endfor
 
 
 hf = figure ();
-%plot([1:top_n],errorscoeff./[1:top_n]', 'linewidth',2);
 start=50; semilogy([start:top_n],abs(errorscoeff(start:end,:)./[start:top_n]'), 'linewidth',2);
 xlabel('n'); ylabel('log avg error');
 legend('ybincoeff','gbincoeff','fbincoeff','fftbincoeff','rbincoeff','pfbincoeff','location','northwest');
 print (hf, "benchmarckerror.svg", "-dsvg");
-%print (hf, "benchmarckerror.pdf", "-dpdflatexstandalone");
-%system ("pdflatex benchmarckerror");
