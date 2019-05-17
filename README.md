@@ -1,3 +1,5 @@
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"</script>
+
 # bincoeff
 binomial coefficient computation
 
@@ -7,7 +9,7 @@ the following methods are available here:
 3. 
 
 ## pbincoeff.m <a name="pbincoeff"></a>
-$ \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}. $
+$$ \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}. $$
 ```
 octave:1> for n=0:10, for k=0:n, printf('%d\t',pbincoeff(n,k)); end; printf('\n'); end;
 1	
@@ -24,7 +26,7 @@ octave:1> for n=0:10, for k=0:n, printf('%d\t',pbincoeff(n,k)); end; printf('\n'
 ```
 
 ## rbincoeff.m <a name="rbincoeff"></a>
-$ \binom{n}{k} = \frac{\prod_{i=n-k+1}^n i}{k!} = \frac{n}{k} \cdot \frac{\prod_{i=n-k+1}^{n-1} i}{k!} = \frac{n}{k} \binom{n-1}{k-1}  , \quad \text{for } k > 0 $
+$$ \binom{n}{k} = \frac{\prod_{i=n-k+1}^n i}{k!} = \frac{n}{k} \cdot \frac{\prod_{i=n-k+1}^{n-1} i}{k!} = \frac{n}{k} \binom{n-1}{k-1}  , \quad \text{for } k > 0 $$
 ```for n=0:10, for k=0:n, printf('%d\t',rbincoeff(n,k)); end; printf('\n'); end;
 1	
 1	1	
