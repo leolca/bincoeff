@@ -10,7 +10,9 @@ the following methods are available here:
 
 ## pbincoeff.m <a name="pbincoeff"></a>
 This function implements the Pascal's recursion. 
+
 ![img](imgs/pbincoeff.png)
+
 ```
 octave:1> for n=0:10, for k=0:n, printf('%d\t',pbincoeff(n,k)); end; printf('\n'); end;
 1	
@@ -28,8 +30,11 @@ octave:1> for n=0:10, for k=0:n, printf('%d\t',pbincoeff(n,k)); end; printf('\n'
 
 ## rbincoeff.m <a name="rbincoeff"></a>
 This function implements the Rolfe's recursion.
+
 Timothy Rolfe, Binomial coefficient recursion, *Association for Computing Machinery (ACM)*, 33, 2, 2001.
+
 ![img](imgs/rbincoeff.png)
+
 ```
 octave:1> for n=0:10, for k=0:n, printf('%d\t',rbincoeff(n,k)); end; printf('\n'); end;
 1	
@@ -47,8 +52,11 @@ octave:1> for n=0:10, for k=0:n, printf('%d\t',rbincoeff(n,k)); end; printf('\n'
 
 ## ybincoeff.m <a name="ybincoeff"></a>
 This function implements an iterative method proposed by Yannis Manolopoulos. It performs divisions and multiplications alternatively to avoid overflow.
+
 Yannis Manolopoulos, Binomial coefficient recursion, *Association for Computing Machinery (ACM)*, 34, 4, 2002.
+
 ![img](imgs/ybincoeff.png)
+
 ```
 octave:1> for n=0:10, for k=0:n, printf('%d\t',ybincoeff(n,k)); end; printf('\n'); end;
 1	
@@ -66,7 +74,9 @@ octave:1> for n=0:10, for k=0:n, printf('%d\t',ybincoeff(n,k)); end; printf('\n'
 
 ## pfbincoeff.m <a name="pfbincoeff"></a>
 This method uses the same formulation used by Yannis but solve it by finding the prime factors in the denominator and cancel terms in the numerator.
+
 ![img](imgs/ybincoeff.png)
+
 ```
 octave:1> for n=0:10, for k=0:n, printf('%d\t',pfbincoeff(n,k)); end; printf('\n'); end;
 1	
