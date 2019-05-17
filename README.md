@@ -218,6 +218,7 @@ $ ./fbincoeff.py 1000 353 1003
 [see code here](bincoeffbenchmark.m)
 
 execution time benchmark
+
 ![img](imgs/benchmarck.svg)
 
 
@@ -225,6 +226,7 @@ execution time benchmark
 [see code here](bincoeffbenchmarkvector.m)
 
 execution time benchmark computing a list o values (fixed n)
+
 ![img](imgs/benchmarckvec.svg)
 
 
@@ -232,4 +234,5 @@ execution time benchmark computing a list o values (fixed n)
 [see code here](bincoeffbenchmarkerror.m)
 
 error benchmark for large values of n
-![img](imgs/benchmarckvecerror.svg)
+
+![img](imgs/benchmarckerror.svg)
