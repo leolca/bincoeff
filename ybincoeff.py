@@ -2,10 +2,6 @@
 from bigfloat import *
 import sys
 
-#  k = min(k, n-k); % #ymmetry
-#  c = round( prod( [n-k+1:n] ./ [1:k] ) );
-
-
 def ybincoeff(n,k,p):
   with precision(p) + RoundTowardZero:
      k = min(k, n-k) # symmetry
