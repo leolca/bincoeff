@@ -11,13 +11,13 @@ the following methods are available here:
 7. DFT based method [fbincoeff.m](#fbincoeff) [code](fbincoef.m)
 
 Python implementation using the [bigfloat](https://pypi.org/project/bigfloat/) package for arbitrary-precision, which is a wrapper around the [GNU MPFR library](https://www.mpfr.org/).
-8. Yannis iterative method [ybincoeff.py](#pyybincoeff)[code](ybincoeff.py)
-9. DFT based method [fbincoeff.py](#pyfbincoeff)[code](fbincoeff.py)
+1. Yannis iterative method [ybincoeff.py](#pyybincoeff)[code](ybincoeff.py)
+2. DFT based method [fbincoeff.py](#pyfbincoeff)[code](fbincoeff.py)
 
 Benchmatk procedures
-10. bincoeffbenchmark.m
-11. bincoeffbenchmarkvector.m
-12. bincoeffbenchmarkerror.m
+1. execution time benchmark [bincoeffbenchmark.m](#bincoeffbenchmarkerror)
+2. execution time benchmark computing a list o values (fixed n) [bincoeffbenchmarkvector.m](#bincoeffbenchmarkvector)
+3. error benchmark for large values of n [bincoeffbenchmarkerror.m](#bincoeffbenchmarkerror)
 
 
 ## pbincoeff.m <a name="pbincoeff"></a>
@@ -214,3 +214,25 @@ $ ./fbincoeff.py 1000 353 1003
 25229445633065974235144080252055773735613043515311956893635594388544559689184803330180149528141512945359658556166399392346118918439771509194920459520556252295683805332098882502374636769258037666692232812592768678750591171883227016115891467430491067982639472436653138035382214107000
 ```
 
+## bincoeffbenchmark.m <a name="bincoeffbenchmarkerror"></a>
+[see code here](bincoeffbenchmark.m)
+
+execution time benchmark
+
+![img](imgs/benchmarck.svg)
+
+
+## bincoeffbenchmarkvector.m <a name="bincoeffbenchmarkvector"></a>
+[see code here](bincoeffbenchmarkvector.m)
+
+execution time benchmark computing a list o values (fixed n)
+
+![img](imgs/benchmarckvec.svg)
+
+
+## bincoeffbenchmarkerror.m <a name="bincoeffbenchmarkerror"></a>
+[see code here](bincoeffbenchmarkerror.m)
+
+error benchmark for large values of n
+
+![img](imgs/benchmarckerror.svg)
