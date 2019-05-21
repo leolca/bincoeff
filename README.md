@@ -2,17 +2,17 @@
 binomial coefficient computation
 
 The following methods are available here:
-1. Pascal recursion [pbincoeff.m](#pbincoeff) [code](pbincoeff.m)
-2. Rolfe recursion  [rbincoeff.m](#rbincoeff) [code](rbincoeff.m)
-3. Yannis iterative method [ybincoeff.m](#ybincoeff) [code](ybincoeff.m)
-4. Prime factorization [pfbincoeff.m](#pfbincoeff) [code](pfbincoeff.m)
-5. Gamma function [gbincoeff.m](#gbincoeff) [code](gbincoeff.m)
-6. FFT method [fftbincoeff.m](#fftbincoeff) [code](fftbincoef.m)
-7. DFT based method [fbincoeff.m](#fbincoeff) [code](fbincoef.m)
+1. Pascal recursion [pbincoeff.m](#pbincoeff) ([code](pbincoeff.m))
+2. Rolfe recursion  [rbincoeff.m](#rbincoeff) ([code](rbincoeff.m))
+3. Yannis iterative method [ybincoeff.m](#ybincoeff) ([code](ybincoeff.m))
+4. Prime factorization [pfbincoeff.m](#pfbincoeff) ([code](pfbincoeff.m))
+5. Gamma function [gbincoeff.m](#gbincoeff) ([code](gbincoeff.m))
+6. FFT method [fftbincoeff.m](#fftbincoeff) ([code](fftbincoef.m))
+7. DFT based method [fbincoeff.m](#fbincoeff) ([code](fbincoef.m))
 
 Python implementation using the [bigfloat](https://pypi.org/project/bigfloat/) package for arbitrary-precision, which is a wrapper around the [GNU MPFR library](https://www.mpfr.org/).
-1. Yannis iterative method [ybincoeff.py](#pyybincoeff)[code](ybincoeff.py)
-2. DFT based method [fbincoeff.py](#pyfbincoeff)[code](fbincoeff.py)
+1. Yannis iterative method [ybincoeff.py](#pyybincoeff) ([code](ybincoeff.py))
+2. DFT based method [fbincoeff.py](#pyfbincoeff) ([code](fbincoeff.py))
 
 Benchmatk procedures:
 1. execution time benchmark [bincoeffbenchmark.m](#bincoeffbenchmarkerror)
@@ -20,7 +20,7 @@ Benchmatk procedures:
 3. error benchmark for large values of n [bincoeffbenchmarkerror.m](#bincoeffbenchmarkerror)
 
 Floating-point precision in computing the factorial:
-1. Direct implementation in C of a factorial as a product [factorial.c](#factorialc)[code](factorial.c)
+1. Direct implementation in C of a factorial as a product [factorial.c](#factorialc) ([code](factorial.c))
 
 
 ## pbincoeff.m <a name="pbincoeff"></a>
