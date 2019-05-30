@@ -1,4 +1,11 @@
-# bincoeff
+1. Binomial coefficient computation ([bincoeff](#bincoeff))
+2. Multinomial coefficient computation ([multicoeff](#multicoeff))
+
+<br/><br/>
+---------
+<br/><br/>
+
+# bincoeff <a name="bincoeff"></a>
 binomial coefficient computation
 
 [![DOI](https://zenodo.org/badge/187116260.svg)](https://zenodo.org/badge/latestdoi/187116260)
@@ -275,7 +282,7 @@ $ paste factorial.txt factorial_c.txt | nl | head -n 23
 
 
 
-# multicoeff
+# multicoeff <a name="multicoeff"></a>
 multinomial coefficient computation
 
 ![img](imgs/multinomialcoeff.png)
