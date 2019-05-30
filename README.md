@@ -4,7 +4,7 @@
 [![DOI](https://zenodo.org/badge/187116260.svg)](https://zenodo.org/badge/latestdoi/187116260)
 
 <br/><br/>
----------
+
 <br/><br/>
 
 # bincoeff <a name="bincoeff"></a>
