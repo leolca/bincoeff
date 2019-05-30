@@ -282,7 +282,7 @@ multinomial coefficient computation
 
 The following methods are available here:
 1. Generalized Pascal's recursion [rmulticoeff.m](#rmulticoeff) ([code](rmulticoeff.m))
-2. aaa
+2. FFT accelerated Rolfe's recursion method  [armulticoeff.m](#armulticoeff) ([code](armulticoeff.m))
 
 
 
@@ -303,4 +303,23 @@ c = 27720
 octave:3> tic; c = rmulticoeff ([5 5 5]); toc, c
 Elapsed time is 70.7959 seconds.
 c = 756756
+```
+
+
+## armulticoeff.m <a name="armulticoeff"></a>
+[see code here](armulticoeff.m)
+
+Using the following relation
+
+![img](imgs/multinomialcoeffprodbinomial.png)
+
+we note that the first coefficient is one. We may compute the second using FFT method (computing all coeffcients for the given level). The following coefficients in the equation above are computed by a recursion that goes until the level of the second coefficient (it is not necessary to go all the way up, if the coefficients at a given level are already computed).
+
+```
+octave:1> tic; c = armulticoeff ([5 5 5]); toc, c
+Elapsed time is 0.00154495 seconds.
+c = 756756
+octave:2> tic; c = armulticoeff ([10 10 10]); toc, c
+Elapsed time is 0.0024488 seconds.
+c = 5550996791340
 ```
