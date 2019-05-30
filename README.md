@@ -293,6 +293,7 @@ The following methods are available here:
 3. FFT accelerated Vandermonde's convolution [vfmulticoeff.m](#vfmulticoeff) ([code](vfmulticoeff.m))
 4. Extended Yannis iterative method [ymulticoeff.m](#ymulticoeff) ([code](ymulticoeff.m))
 5. Product of binomials and gamma function [multicoeff.m](#multicoeff) ([code](multicoeff.m))
+6. Gamma function [gmulticoeff.m](#gmulticoeff) ([code](gmulticoeff.m))
 
 
 
@@ -384,5 +385,19 @@ and each binomial coeffcient is computed by the defaul GNU Octave's function bin
 octave:1> tic; c = multicoeff ([10 10 10]); toc, c
 Elapsed time is 0.00184298 seconds.
 c = 5550996791340
+```
 
+
+## gmulticoeff.m <a name="gmulticoeff"></a>
+[see code here](gmulticoeff.m)
+
+The multinomial coefficient is expressed by gamma functions:
+
+![img](imgs/multinomialcoeffgamma.png)
+
+
+```
+octave:1> tic; c = gmulticoeff ([10 10 10]); toc, c
+Elapsed time is 0.000368834 seconds.
+c = 5550996791340
 ```
