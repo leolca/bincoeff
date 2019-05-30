@@ -23,7 +23,7 @@ Python implementation using the [bigfloat](https://pypi.org/project/bigfloat/) p
 1. Yannis iterative method [ybincoeff.py](#pyybincoeff) ([code](ybincoeff.py))
 2. DFT based method [fbincoeff.py](#pyfbincoeff) ([code](fbincoeff.py))
 
-Benchmatk procedures:
+Benchmark:
 1. execution time benchmark [bincoeffbenchmark.m](#bincoeffbenchmarkerror)
 2. execution time benchmark computing a list o values (fixed n) [bincoeffbenchmarkvector.m](#bincoeffbenchmarkvector)
 3. error benchmark for large values of n [bincoeffbenchmarkerror.m](#bincoeffbenchmarkerror)
@@ -229,7 +229,7 @@ $ ./fbincoeff.py 1000 353 1003
 
 execution time benchmark
 
-![img](imgs/benchmarck.svg)
+![img](imgs/benchmarck2.svg)
 
 
 ## bincoeffbenchmarkvector.m <a name="bincoeffbenchmarkvector"></a>
@@ -298,6 +298,8 @@ The following methods are available here:
 Arbitrary-precision arithmetic implementation:
 1. Implementation in C of the extended Yannis iterative method using [the GNU Multiple Precision Arithmetic Library](https://gmplib.org/) [ymulticoeff.c](#ymulticoeffc) ([code](ymulticoeff.c))
 
+Benchmark:
+1. execution time and error benchmark [multicoeffbenchmarkerror.m](#multicoeffbenchmarkerror)
 
 
 
@@ -424,4 +426,20 @@ $ ./ttic.sh && ./ymulticoeff 100 100 100 && ./ttoc.sh
 0.006
 ```
 Using ttic and ttoc utility from [swarminglogic](https://gist.github.com/swarminglogic/87adb0bd0850d76ba09f).
+
+
+
+## multicoeffbenchmarkerror.m <a name="multicoeffbenchmarkerror"></a>
+[see code here](multicoeffbenchmarkerror.m)
+
+
+execution time benchmark
+
+![img](imgs/multicoeffbenchmarck_time.svg)
+
+
+error benchmark for large values of n
+
+![img](imgs/multicoeffbenchmarck_error_b.svg)
+
 
