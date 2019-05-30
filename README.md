@@ -1,14 +1,14 @@
 1. Binomial coefficient computation ([bincoeff](#bincoeff))
 2. Multinomial coefficient computation ([multicoeff](#multicoeff))
 
+[![DOI](https://zenodo.org/badge/187116260.svg)](https://zenodo.org/badge/latestdoi/187116260)
+
 <br/><br/>
 ---------
 <br/><br/>
 
 # bincoeff <a name="bincoeff"></a>
 binomial coefficient computation
-
-[![DOI](https://zenodo.org/badge/187116260.svg)](https://zenodo.org/badge/latestdoi/187116260)
 
 The following methods are available here:
 1. Pascal recursion [pbincoeff.m](#pbincoeff) ([code](pbincoeff.m))
