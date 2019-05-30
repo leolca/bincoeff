@@ -1,23 +1,26 @@
 # bincoeff
 binomial coefficient computation
 
-the following methods are available here:
-1. Pascal recursion [pbincoeff.m](#pbincoeff) [code](pbincoeff.m)
-2. Rolfe recursion  [rbincoeff.m](#rbincoeff) [code](rbincoeff.m)
-3. Yannis iterative method [ybincoeff.m](#ybincoeff) [code](ybincoeff.m)
-4. Prime factorization [pfbincoeff.m](#pfbincoeff) [code](pfbincoeff.m)
-5. Gamma function [gbincoeff.m](#gbincoeff) [code](gbincoeff.m)
-6. FFT method [fftbincoeff.m](#fftbincoeff) [code](fftbincoef.m)
-7. DFT based method [fbincoeff.m](#fbincoeff) [code](fbincoef.m)
+The following methods are available here:
+1. Pascal recursion [pbincoeff.m](#pbincoeff) ([code](pbincoeff.m))
+2. Rolfe recursion  [rbincoeff.m](#rbincoeff) ([code](rbincoeff.m))
+3. Yannis iterative method [ybincoeff.m](#ybincoeff) ([code](ybincoeff.m))
+4. Prime factorization [pfbincoeff.m](#pfbincoeff) ([code](pfbincoeff.m))
+5. Gamma function [gbincoeff.m](#gbincoeff) ([code](gbincoeff.m))
+6. FFT method [fftbincoeff.m](#fftbincoeff) ([code](fftbincoef.m))
+7. DFT based method [fbincoeff.m](#fbincoeff) ([code](fbincoef.m))
 
 Python implementation using the [bigfloat](https://pypi.org/project/bigfloat/) package for arbitrary-precision, which is a wrapper around the [GNU MPFR library](https://www.mpfr.org/).
-1. Yannis iterative method [ybincoeff.py](#pyybincoeff)[code](ybincoeff.py)
-2. DFT based method [fbincoeff.py](#pyfbincoeff)[code](fbincoeff.py)
+1. Yannis iterative method [ybincoeff.py](#pyybincoeff) ([code](ybincoeff.py))
+2. DFT based method [fbincoeff.py](#pyfbincoeff) ([code](fbincoeff.py))
 
-Benchmatk procedures
+Benchmatk procedures:
 1. execution time benchmark [bincoeffbenchmark.m](#bincoeffbenchmarkerror)
 2. execution time benchmark computing a list o values (fixed n) [bincoeffbenchmarkvector.m](#bincoeffbenchmarkvector)
 3. error benchmark for large values of n [bincoeffbenchmarkerror.m](#bincoeffbenchmarkerror)
+
+Floating-point precision in computing the factorial:
+1. Direct implementation in C of a factorial as a product [factorial.c](#factorialc) ([code](factorial.c))
 
 
 ## pbincoeff.m <a name="pbincoeff"></a>
@@ -172,8 +175,6 @@ octave:519> for n=0:10, disp(fftbincoeff(n)); end;
 ```
 
 
-
-
 ## fbincoeff.m <a name="fbincoeff"></a>
 [see code here](fbincoeff.m)
 
@@ -236,3 +237,36 @@ execution time benchmark computing a list o values (fixed n)
 error benchmark for large values of n
 
 ![img](imgs/benchmarckerror.svg)
+
+
+
+## factorial.c <a name="factorialc"></a>
+[see code here](factorial.c)
+```
+$ gcc factorial.c -o factorial
+$ for k in $(seq 1 100); do ./factorial $k; done > factorial_c.txt
+$ paste factorial.txt factorial_c.txt | nl | head -n 23 
+     1	1	1	1
+     2	2	2	2
+     3	6	6	6
+     4	24	24	24
+     5	120	120	120
+     6	720	720	720
+     7	5040	5040	5040
+     8	40320	40320	40320
+     9	362880	362880	362880
+    10	3628800	3628800	3628800
+    11	39916800	39916800	39916800
+    12	479001600	479001600	479001600
+    13	6227020800	6227020800	6227020800
+    14	87178291200	87178289152	87178291200
+    15	1307674368000	1307674279936	1307674368000
+    16	20922789888000	20922788478976	20922789888000
+    17	355687428096000	355687414628352	355687428096000
+    18	6402373705728000	6402373530419200	6402373705728000
+    19	121645100408832000	121645096004222976	121645100408832000
+    20	2432902008176640000	2432902023163674624	2432902008176640000
+    21	51090942171709440000	51090940837169725440	51090942171709440000
+    22	1124000727777607680000	1124000724806013026304	1124000727777607680000
+    23	25852016738884976640000	25852017444594485559296	25852016738884978212864
+```
