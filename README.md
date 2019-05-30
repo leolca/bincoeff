@@ -1,6 +1,8 @@
 # bincoeff
 binomial coefficient computation
 
+[![DOI](https://zenodo.org/badge/187116260.svg)](https://zenodo.org/badge/latestdoi/187116260)
+
 The following methods are available here:
 1. Pascal recursion [pbincoeff.m](#pbincoeff) ([code](pbincoeff.m))
 2. Rolfe recursion  [rbincoeff.m](#rbincoeff) ([code](rbincoeff.m))
