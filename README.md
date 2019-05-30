@@ -291,6 +291,7 @@ The following methods are available here:
 1. Generalized Pascal's recursion [rmulticoeff.m](#rmulticoeff) ([code](rmulticoeff.m))
 2. FFT accelerated Rolfe's recursion method  [armulticoeff.m](#armulticoeff) ([code](armulticoeff.m))
 3. FFT accelerated Vandermonde's convolution [vfmulticoeff.m](#vfmulticoeff) ([code](vfmulticoeff.m))
+4. Extended Yannis iterative method [ymulticoeff.m](#ymulticoeff) ([code](ymulticoeff.m))
 
 
 
@@ -349,6 +350,21 @@ We realize that these coefficients might be computed by FFT just peforming a cum
 ```
 octave:1> tic; c = vfmulticoeff ([10 10 10]); toc, c
 Elapsed time is 0.00150704 seconds.
+c = 5550996791340
+```
+
+
+
+## ymulticoeff.m <a name="ymulticoeff"></a>
+[see code here](ymulticoeff.m)
+
+This function implements the extended version of Yannis iterative method, described in the equation bellow. The elements in the numerator and denominator are sorted in descending order to avoid overflow.
+
+![img](imgs/multinomialcoeffyanisiteration.png)
+
+```
+octave:1> tic; c = ymulticoeff ([10 10 10]); toc, c
+Elapsed time is 0.000590801 seconds.
 c = 5550996791340
 ```
 
