@@ -272,3 +272,35 @@ $ paste factorial.txt factorial_c.txt | nl | head -n 23
     22	1124000727777607680000	1124000724806013026304	1124000727777607680000
     23	25852016738884976640000	25852017444594485559296	25852016738884978212864
 ```
+
+
+
+# multicoeff
+multinomial coefficient computation
+
+![img](imgs/multinomialcoeff.png)
+
+The following methods are available here:
+1. Generalized Pascal's recursion [rmulticoeff.m](#rmulticoeff) ([code](rmulticoeff.m))
+2. aaa
+
+
+
+## rmulticoeff.m <a name="rmulticoeff"></a>
+[see code here](rmulticoeff.m)
+
+This function implements the generalized Pascal's recursion to compute multinomials coefficients. 
+
+![img](imgs/multinomialcoeffrecursiverelation.png)
+
+```
+octave:1> tic; c = rmulticoeff ([1 2 3]); toc, c
+Elapsed time is 0.0132861 seconds.
+c = 60
+octave:2> tic; c = rmulticoeff ([3 4 5]); toc, c
+Elapsed time is 2.6084 seconds.
+c = 27720
+octave:3> tic; c = rmulticoeff ([5 5 5]); toc, c
+Elapsed time is 70.7959 seconds.
+c = 756756
+```
