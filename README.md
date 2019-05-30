@@ -299,8 +299,10 @@ Arbitrary-precision arithmetic implementation:
 1. Implementation in C of the extended Yannis iterative method using [the GNU Multiple Precision Arithmetic Library](https://gmplib.org/) [ymulticoeff.c](#ymulticoeffc) ([code](ymulticoeff.c))
 
 Benchmark:
-1. execution time and error benchmark [multicoeffbenchmarkerror.m](#multicoeffbenchmarkerror)
+1. Execution time and error benchmark [multicoeffbenchmarkerror.m](#multicoeffbenchmarkerror)
 
+Table:
+1. Create a table of multinomial coeffcients [multicoefftable.sh](#multicoefftable)
 
 
 
@@ -443,3 +445,37 @@ error benchmark for large values of n
 ![img](imgs/multicoeffbenchmarck_error_b.svg)
 
 
+
+## multicoefftable.sh <a name="multicoefftable"></a>
+[see code here](multicoefftable.sh)
+
+Creating a table of all the multinomial coefficients for n=4 and m=3.
+
+```
+$ ./multicoefftable.sh 4 3 | column -c 80
+0,0,0	1	1,0,0	1	2,0,0	1	3,0,0	1	4,0,0	1
+0,0,1	1	1,0,1	2	2,0,1	3	3,0,1	4	4,0,1	5
+0,0,2	1	1,0,2	3	2,0,2	6	3,0,2	10	4,0,2	15
+0,0,3	1	1,0,3	4	2,0,3	10	3,0,3	20	4,0,3	35
+0,0,4	1	1,0,4	5	2,0,4	15	3,0,4	35	4,0,4	70
+0,1,0	1	1,1,0	2	2,1,0	3	3,1,0	4	4,1,0	5
+0,1,1	2	1,1,1	6	2,1,1	12	3,1,1	20	4,1,1	30
+0,1,2	3	1,1,2	12	2,1,2	30	3,1,2	60	4,1,2	105
+0,1,3	4	1,1,3	20	2,1,3	60	3,1,3	140	4,1,3	280
+0,1,4	5	1,1,4	30	2,1,4	105	3,1,4	280	4,1,4	630
+0,2,0	1	1,2,0	3	2,2,0	6	3,2,0	10	4,2,0	15
+0,2,1	3	1,2,1	12	2,2,1	30	3,2,1	60	4,2,1	105
+0,2,2	6	1,2,2	30	2,2,2	90	3,2,2	210	4,2,2	420
+0,2,3	10	1,2,3	60	2,2,3	210	3,2,3	560	4,2,3	1260
+0,2,4	15	1,2,4	105	2,2,4	420	3,2,4	1260	4,2,4	3150
+0,3,0	1	1,3,0	4	2,3,0	10	3,3,0	20	4,3,0	35
+0,3,1	4	1,3,1	20	2,3,1	60	3,3,1	140	4,3,1	280
+0,3,2	10	1,3,2	60	2,3,2	210	3,3,2	560	4,3,2	1260
+0,3,3	20	1,3,3	140	2,3,3	560	3,3,3	1680	4,3,3	4200
+0,3,4	35	1,3,4	280	2,3,4	1260	3,3,4	4200	4,3,4	11550
+0,4,0	1	1,4,0	5	2,4,0	15	3,4,0	35	4,4,0	70
+0,4,1	5	1,4,1	30	2,4,1	105	3,4,1	280	4,4,1	630
+0,4,2	15	1,4,2	105	2,4,2	420	3,4,2	1260	4,4,2	3150
+0,4,3	35	1,4,3	280	2,4,3	1260	3,4,3	4200	4,4,3	11550
+0,4,4	70	1,4,4	630	2,4,4	3150	3,4,4	11550	4,4,4	34650
+```
