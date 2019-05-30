@@ -295,6 +295,12 @@ The following methods are available here:
 6. Gamma function [gmulticoeff.m](#gmulticoeff) ([code](gmulticoeff.m))
 
 
+Arbitrary-precision arithmetic implementation:
+1. Implementation in C of the extended Yannis iterative method using [the GNU Multiple Precision Arithmetic Library](https://gmplib.org/) [ymulticoeff.c](#ymulticoeffc) ([code](ymulticoeff.c))
+
+
+
+
 
 ## rmulticoeff.m <a name="rmulticoeff"></a>
 [see code here](rmulticoeff.m)
@@ -400,3 +406,22 @@ octave:1> tic; c = gmulticoeff ([10 10 10]); toc, c
 Elapsed time is 0.000368834 seconds.
 c = 5550996791340
 ```
+
+
+## ymulticoeff.c <a name="ymulticoeffc"></a>
+[see code here](ymulticoeff.c)
+
+This function implements the extended version of Yannis iterative method using the GMP arbitrary-precision arithmetic library.
+
+![img](imgs/multinomialcoeffyanisiteration.png)
+
+
+```
+$ ./ymulticoeff 30 30 30
+79607789567531236214600000000000000000000
+$ ./ttic.sh && ./ymulticoeff 100 100 100 && ./ttoc.sh 
+376523493564631064367000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+0.006
+```
+Using ttic and ttoc utility from [swarminglogic](https://gist.github.com/swarminglogic/87adb0bd0850d76ba09f).
+
