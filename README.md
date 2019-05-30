@@ -1,7 +1,14 @@
-# bincoeff
-binomial coefficient computation
+1. Binomial coefficient computation ([bincoeff](#bincoeff))
+2. Multinomial coefficient computation ([multicoeff](#multicoeff))
 
 [![DOI](https://zenodo.org/badge/187116260.svg)](https://zenodo.org/badge/latestdoi/187116260)
+
+<br/><br/>
+
+<br/><br/>
+
+# bincoeff <a name="bincoeff"></a>
+binomial coefficient computation
 
 The following methods are available here:
 1. Pascal recursion [pbincoeff.m](#pbincoeff) ([code](pbincoeff.m))
@@ -275,7 +282,7 @@ $ paste factorial.txt factorial_c.txt | nl | head -n 23
 
 
 
-# multicoeff
+# multicoeff <a name="multicoeff"></a>
 multinomial coefficient computation
 
 ![img](imgs/multinomialcoeff.png)
@@ -283,6 +290,7 @@ multinomial coefficient computation
 The following methods are available here:
 1. Generalized Pascal's recursion [rmulticoeff.m](#rmulticoeff) ([code](rmulticoeff.m))
 2. FFT accelerated Rolfe's recursion method  [armulticoeff.m](#armulticoeff) ([code](armulticoeff.m))
+3. FFT accelerated Vandermonde's convolution [vfmulticoeff.m](#vfmulticoeff) ([code](vfmulticoeff.m))
 
 
 
@@ -323,3 +331,24 @@ octave:2> tic; c = armulticoeff ([10 10 10]); toc, c
 Elapsed time is 0.0024488 seconds.
 c = 5550996791340
 ```
+
+
+## vfmulticoeff.m <a name="vfmulticoeff"></a>
+[see code here](vfmulticoeff.m)
+
+Using the following relation, we may compute the multinomial coefficient by a product of binomial coefficients.
+
+![img](imgs/multinomialcoeffprodbinomial.png)
+
+The first coefficient is one and the second is computed by FFT. The following coeffcieints might be computed by a Chu-Vandermonde's convolution:
+
+![img](imgs/vandermondeconvolution.png)
+
+We realize that these coefficients might be computed by FFT just peforming a cumulative product (convolution in FFT domain).
+
+```
+octave:1> tic; c = vfmulticoeff ([10 10 10]); toc, c
+Elapsed time is 0.00150704 seconds.
+c = 5550996791340
+```
+
