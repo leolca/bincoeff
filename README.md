@@ -23,7 +23,7 @@ Python implementation using the [bigfloat](https://pypi.org/project/bigfloat/) p
 1. Yannis iterative method [ybincoeff.py](#pyybincoeff) ([code](ybincoeff.py))
 2. DFT based method [fbincoeff.py](#pyfbincoeff) ([code](fbincoeff.py))
 
-Benchmatk procedures:
+Benchmark:
 1. execution time benchmark [bincoeffbenchmark.m](#bincoeffbenchmarkerror)
 2. execution time benchmark computing a list o values (fixed n) [bincoeffbenchmarkvector.m](#bincoeffbenchmarkvector)
 3. error benchmark for large values of n [bincoeffbenchmarkerror.m](#bincoeffbenchmarkerror)
@@ -229,7 +229,7 @@ $ ./fbincoeff.py 1000 353 1003
 
 execution time benchmark
 
-![img](imgs/benchmarck.svg)
+![img](imgs/benchmarck2.svg)
 
 
 ## bincoeffbenchmarkvector.m <a name="bincoeffbenchmarkvector"></a>
@@ -252,32 +252,31 @@ error benchmark for large values of n
 ## factorial.c <a name="factorialc"></a>
 [see code here](factorial.c)
 ```
-$ gcc factorial.c -o factorial
-$ for k in $(seq 1 100); do ./factorial $k; done > factorial_c.txt
-$ paste factorial.txt factorial_c.txt | nl | head -n 23 
-     1	1	1	1
-     2	2	2	2
-     3	6	6	6
-     4	24	24	24
-     5	120	120	120
-     6	720	720	720
-     7	5040	5040	5040
-     8	40320	40320	40320
-     9	362880	362880	362880
-    10	3628800	3628800	3628800
-    11	39916800	39916800	39916800
-    12	479001600	479001600	479001600
-    13	6227020800	6227020800	6227020800
-    14	87178291200	87178289152	87178291200
-    15	1307674368000	1307674279936	1307674368000
-    16	20922789888000	20922788478976	20922789888000
-    17	355687428096000	355687414628352	355687428096000
-    18	6402373705728000	6402373530419200	6402373705728000
-    19	121645100408832000	121645096004222976	121645100408832000
-    20	2432902008176640000	2432902023163674624	2432902008176640000
-    21	51090942171709440000	51090940837169725440	51090942171709440000
-    22	1124000727777607680000	1124000724806013026304	1124000727777607680000
-    23	25852016738884976640000	25852017444594485559296	25852016738884978212864
+$ gcc factorial.c -lgmp -o factorial
+$ ./factorial 10
+10	3628800 (32 bits)	3628800 (32 bits)	3628800 (32 bits)	3628800 (64 bits)	3628800 (128 bits)
+$ { echo -e 'n\tint\tuint\tfloat\tdouble\tGMP'; for k in $(seq 1 20); do ./factorial $k | sed -e 's/([^()]*)//g'; done; } | column -t 
+n   int          uint        float                double               GMP
+1   1            1           1                    1                    1
+2   2            2           2                    2                    2
+3   6            6           6                    6                    6
+4   24           24          24                   24                   24
+5   120          120         120                  120                  120
+6   720          720         720                  720                  720
+7   5040         5040        5040                 5040                 5040
+8   40320        40320       40320                40320                40320
+9   362880       362880      362880               362880               362880
+10  3628800      3628800     3628800              3628800              3628800
+11  39916800     39916800    39916800             39916800             39916800
+12  479001600    479001600   479001600            479001600            479001600
+13  1932053504   1932053504  6227020800           6227020800           6227020800
+14  1278945280   1278945280  87178289152          87178291200          87178291200
+15  2004310016   2004310016  1307674279936        1307674368000        1307674368000
+16  2004189184   2004189184  20922788478976       20922789888000       20922789888000
+17  -288522240   4006445056  355687414628352      355687428096000      355687428096000
+18  -898433024   3396534272  6402373530419200     6402373705728000     6402373705728000
+19  109641728    109641728   121645096004222976   121645100408832000   121645100408832000
+20  -2102132736  2192834560  2432902023163674624  2432902008176640000  2432902008176640000
 ```
 
 
@@ -294,6 +293,14 @@ The following methods are available here:
 4. Extended Yannis iterative method [ymulticoeff.m](#ymulticoeff) ([code](ymulticoeff.m))
 5. Product of binomials and gamma function [multicoeff.m](#multicoeff) ([code](multicoeff.m))
 6. Gamma function [gmulticoeff.m](#gmulticoeff) ([code](gmulticoeff.m))
+
+
+Arbitrary-precision arithmetic implementation:
+1. Implementation in C of the extended Yannis iterative method using [the GNU Multiple Precision Arithmetic Library](https://gmplib.org/) [ymulticoeff.c](#ymulticoeffc) ([code](ymulticoeff.c))
+
+Benchmark:
+1. execution time and error benchmark [multicoeffbenchmarkerror.m](#multicoeffbenchmarkerror)
+
 
 
 
@@ -401,3 +408,38 @@ octave:1> tic; c = gmulticoeff ([10 10 10]); toc, c
 Elapsed time is 0.000368834 seconds.
 c = 5550996791340
 ```
+
+
+## ymulticoeff.c <a name="ymulticoeffc"></a>
+[see code here](ymulticoeff.c)
+
+This function implements the extended version of Yannis iterative method using the GMP arbitrary-precision arithmetic library.
+
+![img](imgs/multinomialcoeffyanisiteration.png)
+
+
+```
+$ ./ymulticoeff 30 30 30
+79607789567531236214600000000000000000000
+$ ./ttic.sh && ./ymulticoeff 100 100 100 && ./ttoc.sh 
+376523493564631064367000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+0.006
+```
+Using ttic and ttoc utility from [swarminglogic](https://gist.github.com/swarminglogic/87adb0bd0850d76ba09f).
+
+
+
+## multicoeffbenchmarkerror.m <a name="multicoeffbenchmarkerror"></a>
+[see code here](multicoeffbenchmarkerror.m)
+
+
+execution time benchmark
+
+![img](imgs/multicoeffbenchmarck_time.svg)
+
+
+error benchmark for large values of n
+
+![img](imgs/multicoeffbenchmarck_error_b.svg)
+
+
