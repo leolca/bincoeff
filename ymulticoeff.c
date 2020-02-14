@@ -3,12 +3,14 @@
 #include <gmp.h>
 #include <assert.h>
 
-void gmpmultinomialcoefficient(mpf_t result, int* ks, int m, int n) {
-   mpf_set_ui(result,1);
+void gmpmultinomialcoefficient(mpq_t result, int* ks, int m, int n) {
+   mpq_set_ui(result,1,1);
+   mpq_t aux;
+   mpq_init(aux);
    for(int i=1; i<m; ++i){
       for(int j=ks[i]; j>0; --j){
-         mpf_mul_ui(result,result,n); n--;
-	 mpf_div_ui(result,result,j);
+	 mpq_set_ui(aux,n--,j);
+	 mpq_mul(result,result,aux);
       }
    }
 }
@@ -23,11 +25,10 @@ int main(int argc, char *argv[]) {
   int m = argc-1;
   int n = 0;
   int *ks = malloc(m * sizeof(int));
-  mpf_t mcoef;
-  mpf_init(mcoef);
-  mpf_t delta;
-  mpf_init(delta);
-  mpf_set_d(delta,0.5);
+  mpq_t mcoef;
+  mpq_init(mcoef);
+  mpz_t mcoefz, num, den;
+  mpz_init(mcoefz); mpz_init(num); mpz_init(den);
 
   for(int i=0; i<m; ++i) {
      ks[i] = atoi(argv[i+1]);
@@ -36,12 +37,16 @@ int main(int argc, char *argv[]) {
 
   qsort (ks, m, sizeof(int), compare);
   gmpmultinomialcoefficient(mcoef, ks, m, n);
-  // rounding
-  mpf_add(mcoef,mcoef,delta);
-  mpf_floor(mcoef,mcoef);
-  gmp_printf("%.0Ff\n", mcoef);
+  
+  mpq_get_num(num,mcoef);
+  mpq_get_den(den,mcoef);
+  mpz_div(mcoefz,num,den);
+  mpz_out_str(stdout,10,mcoefz);
 
-  mpf_clear(mcoef);
+  mpq_clear(mcoef); 
+  mpz_clear(mcoefz); mpz_clear(num); mpz_clear(den);
   free(ks);
+  printf("\n");
+  fflush(stdout);
   return 0;
 }
