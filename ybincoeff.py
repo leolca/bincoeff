@@ -5,7 +5,7 @@ import sys
 def ybincoeff(n,k,p):
   with precision(p) + RoundTowardZero:
      k = min(k, n-k) # symmetry
-     c = 1;
+     c = BigFloat(1);
      num = range(n-k+1, n+1)
      den = range(1,k+1)
      for i in range(0, k):
