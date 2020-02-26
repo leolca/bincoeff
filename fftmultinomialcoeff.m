@@ -1,4 +1,4 @@
-function C = fftmultinomialcoeff (n,m)
+function C = fftmultinomialcoeff (n,m,rtype)
 %
 % C = fftmultinomialcoeff (n,m)
 %
@@ -15,33 +15,6 @@ function C = fftmultinomialcoeff (n,m)
      m = length(k);
      n = sum(k);
   endif
-
-
-  %switch m,
-  %  case 2, c = [1 1]; 
-  %  case 3, c = [1 1; 1 0];
-  %  case 4, c(:,:,1) = [1 1; 1 0]; c(:,:,2) = [1 0; 0 0];
-  %otherwise,
-  %  error ('not implemented');
-  %end
-
-  %c = 1;
-  %if m > 1, c(1,2) = 1; endif
-  %if m > 2, sc = size(c); d=zeros(sc); d(1)=1; c(2,:)=d; endif %c(2,1) = 1; endif
-  %if m > 3, c(1,1,2) = 1; endif
-  %if m > 4, c(1,1,1,1) = 1; endif
-  %c = 1;
-  %if m > 1, c(1,2) = 1; endif
-  %if m > 2, c(1,1,2) = 1; endif
-  %if m > 3, c(1,1,1,2) = 1; endif
-  %if m > 4, c(1,1,1,1,2) = 1; endif
-  % ... and so on
- 
-  %c = vec ([0 0], m);
-  %c(1) = 1;
-  %for i=1:m-1, 
-  %  c(2*i) = 1;
-  %endfor
 
   c=zeros(1,2^m);
   if m > 1,
@@ -61,6 +34,16 @@ function C = fftmultinomialcoeff (n,m)
   if exist ('k') && !isempty (k),
      idx = idx=sum(k(2:end).*(n+1).^[0:length(k)-2])+1;
      C = C(idx);
+  endif
+
+  if nargin < 3,
+     rtype = 'array';
+  endif     
+  if length(C) > 1,
+     if !strcmp (rtype, 'matrix'),
+	idx = find (C > 0);
+        C = C(idx);
+     endif
   endif
 
 endfunction
